@@ -36,7 +36,21 @@ function Slideshow(config){
 	//////////////////////////////////////////////////
 	/////////////// GO TO NEXT SLIDE /////////////////
 	//////////////////////////////////////////////////
-
+		if (!String.prototype.includes) {
+  String.prototype.includes = function(search, start) {
+    'use strict';
+    if (typeof start !== 'number') {
+      start = 0;
+    }
+    
+    if (start + search.length > this.length) {
+      return false;
+    } else {
+      return this.indexOf(search, start) !== -1;
+    }
+  };
+}
+	
 	// Go to next slide
 	self.nextSlide = function(){
 
@@ -82,11 +96,10 @@ function Slideshow(config){
 									//self.slideIndex = 16;
 		// Update the information
 		if(self.slideIndex >= self.slides.length-1) return;
-		var yasaman = selectedAnswer.toString();
-		if($(".yasaman").indexof("CORRECT")> -1) {
+		if(selectedAnswer.includes("CORRECT"))
 			self.slideIndex++;
 		self.currentSlide = self.slides[self.slideIndex];
-	}
+
 		// On Start
 		if(self.currentSlide.onstart){
 			console.log('chkpt 1');
