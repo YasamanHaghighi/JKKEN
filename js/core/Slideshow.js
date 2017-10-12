@@ -82,10 +82,10 @@ function Slideshow(config){
 									//self.slideIndex = 16;
 		// Update the information
 		if(self.slideIndex >= self.slides.length-1) return;
-		if(selectedAnswer.includes("CORRECT"))
+		if($(".selectedAnswer").indexof("CORRECT")> -1) {
 			self.slideIndex++;
 		self.currentSlide = self.slides[self.slideIndex];
-
+	}
 		// On Start
 		if(self.currentSlide.onstart){
 			console.log('chkpt 1');
